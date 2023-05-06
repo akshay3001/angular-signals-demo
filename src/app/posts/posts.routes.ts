@@ -19,7 +19,6 @@ export const POSTS_ROUTES: Routes = [
             (c) => c.CreatePostComponent
           ),
       },
-      { path: '**', redirectTo: 'posts' },
     ],
   },
   { path: '**', redirectTo: 'posts' },

@@ -1,1 +1,65 @@
-<p>create-post works!</p>
+<h2>Create new post</h2>
+
+<mat-vertical-stepper
+  [linear]="false"
+  #stepper
+>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Post title</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Post title placeholder"
+          formControlName="postTitle"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+        
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" (submit)="onSubmit()">
+      <ng-template matStepLabel>Post body</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Post body placeholder"
+          formControlName="postBody"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Submit</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <h3>
+      Post created successfully
+    </h3>
+    <button mat-raised-button color="primary" (click)="stepper.reset()">New post</button>
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque excepturi maxime ipsam ut doloremque, fuga veritatis quod itaque officiis minus temporibus asperiores exercitationem maiores iusto deleniti labore odit ratione?
+      <!-- <button mat-raised-button color="primary" routerLink="../">Post List</button> -->
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+<hr>
+
+<h2>Testing here</h2>
+
+First Form
+<pre>
+  {{ firstFormGroup.value | json }}
+</pre>
+Second Form
+<pre>
+  {{ secondFormGroup.value | json }}
+</pre>
