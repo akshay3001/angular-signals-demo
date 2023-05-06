@@ -1,4 +1,4 @@
-<mat-card class="post__card">
+<mat-card [ngClass]="viewType === 'grid' ? 'post__grid' : 'post__list'" class="post__card">
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{ post.title | titlecase }}</mat-card-title>

@@ -1,12 +1,42 @@
 <header class="posts-header">
   <h2>Posts</h2>
-  <button mat-raised-button color="primary">Create new post</button>
+  <div>
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      class="card-type-switcher"
+      name="postCardType"
+      aria-label="Post Card type"
+    >
+      <mat-button-toggle checked="true" value="grid">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Grid icon"
+          fontIcon="grid_view"
+        ></mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="List icon"
+          fontIcon="list"
+        ></mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="create-post"
+      routerLinkActive="router-link-active"
+    >
+      Create new post
+    </button>
+  </div>
 </header>
 
 <ng-container *ngIf="posts().length > 0; else noPostsFound">
-  <section class="post">
+  <section [ngClass]="group.value === 'grid' ? 'post-grid' : 'post-card'">
     <ng-container *ngFor="let post of posts()">
-      <app-post [post]="post"></app-post>
+      <app-post [post]="post" [viewType]="group.value"></app-post>
     </ng-container>
   </section>
 </ng-container>

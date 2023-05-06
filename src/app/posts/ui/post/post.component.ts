@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { NgClass, TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Post } from '../../data-access/post';
@@ -6,24 +6,12 @@ import { Post } from '../../data-access/post';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [MatCardModule, TitleCasePipe],
+  imports: [MatCardModule, NgClass ,TitleCasePipe],
   templateUrl: './post.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
-      .post__card {
-        height: 270px;
-        max-height: 270px;
-        max-width: 400px;
-        margin-block-end: 1rem;
-        margin-inline-end: 1rem;
-      }
-      .post__card-content {
-        padding-block-start: 1rem;
-      }
-    `,
-  ],
+  styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
   @Input({ required: true }) post!: Post;
+  @Input({ required: true }) viewType!: 'grid' | 'list';
 }
