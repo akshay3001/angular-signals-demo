@@ -1,0 +1,29 @@
+<header class="posts-header">
+  <h2>Posts</h2>
+  <button mat-raised-button color="primary">Create new post</button>
+</header>
+
+<ng-container *ngIf="posts().length > 0; else noPostsFound">
+  <section class="post">
+    <ng-container *ngFor="let post of posts()">
+      <app-post [post]="post"></app-post>
+    </ng-container>
+  </section>
+</ng-container>
+
+<ng-template #noPostsFound>
+  <mat-card class="error-card">
+    <mat-card-header>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Error home icon"
+        fontIcon="error"
+      ></mat-icon>
+    </mat-card-header>
+
+    <mat-card-content class="error-card__content">
+      <h2>NO POSTS FOUND</h2>
+      <p>There are no posts to display.</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

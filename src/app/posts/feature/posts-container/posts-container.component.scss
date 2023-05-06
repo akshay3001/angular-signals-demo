@@ -1,0 +1,20 @@
+.post {
+  display: flex;
+  flex-wrap: wrap;
+}
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 1rem;
+}
+.error-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+
+  .error-card__content {
+    text-align: center;
+    margin-block: 1rem;
+  }
+}
